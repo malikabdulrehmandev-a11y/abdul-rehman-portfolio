@@ -1,4 +1,4 @@
-﻿"use client";
+﻿\"use client";
 
 import React from "react";
 import ContactForm from "./ContactForm";
@@ -17,7 +17,6 @@ export default function ContactSection() {
         </div>
         
         <div className="bg-slate-900/50 p-8 rounded-2xl border border-slate-800 max-w-lg mx-auto">
-          {/* Yahan humne upar banaya hua ContactForm render kar diya */}
           <ContactForm />
         </div>
       </div>

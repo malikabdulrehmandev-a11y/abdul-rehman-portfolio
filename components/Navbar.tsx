@@ -6,34 +6,28 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-slate-950/80 backdrop-blur-md text-white sticky top-0 z-50 border-b border-slate-800">
-      <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-        {/* Logo/Name */}
-        <div className="text-2xl font-black tracking-wider bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent hover:scale-105 transition-transform cursor-pointer">
-          ABDUL REHMAN
+    <nav className="bg-slate-950/80 backdrop-blur-md text-white sticky top-0 z-50 border-b border-slate-900">
+      <div className="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
+        {/* Glowing Logo */}
+        <div className="text-xl font-black tracking-wider bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent hover:opacity-80 transition-opacity cursor-pointer">
+          AR.DEV
         </div>
 
-        {/* Desktop Links (Badi screens par dikhenge) */}
-        <div className="hidden md:flex items-center gap-8 font-medium">
-          <a href="#about" className="text-slate-300 hover:text-blue-400 transition-colors duration-200 relative group py-1">
-            About
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
-          </a>
-          <a href="#projects" className="text-slate-300 hover:text-blue-400 transition-colors duration-200 relative group py-1">
-            Projects
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
-          </a>
-          <a href="#contact" className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-full font-bold shadow-lg shadow-blue-500/20 transition-all hover:shadow-blue-500/40">
-            Contact Me
+        {/* Laptop Links */}
+        <div className="hidden md:flex items-center gap-8 text-sm font-bold tracking-wider">
+          <a href="#about" className="text-slate-400 hover:text-white transition-colors">ABOUT</a>
+          <a href="#projects" className="text-slate-400 hover:text-white transition-colors">PROJECTS</a>
+          <a href="#contact" className="bg-blue-600/10 hover:bg-blue-600/20 text-blue-400 border border-blue-500/30 px-5 py-2.5 rounded-xl transition-all">
+            CONTACT ME
           </a>
         </div>
 
-        {/* Mobile Hamburger Button (Mobile par menu kholne ke liye) */}
+        {/* Mobile Hamburger Button */}
         <button 
           onClick={() => setIsOpen(!isOpen)} 
-          className="md:hidden block text-slate-300 hover:text-white focus:outline-none transition-colors"
+          className="md:hidden text-slate-400 hover:text-white focus:outline-none"
         >
-          <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             {isOpen ? (
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
             ) : (
@@ -43,12 +37,14 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Links Menu */}
+      {/* Mobile Sidebar/Menu */}
       {isOpen && (
-        <div className="md:hidden bg-slate-900 border-b border-slate-800 px-6 py-6 flex flex-col gap-4 font-semibold animate-fade-in">
-          <a href="#about" onClick={() => setIsOpen(false)} className="text-slate-300 hover:text-blue-400 py-2 border-b border-slate-800/50">About</a>
-          <a href="#projects" onClick={() => setIsOpen(false)} className="text-slate-300 hover:text-blue-400 py-2 border-b border-slate-800/50">Projects</a>
-          <a href="#contact" onClick={() => setIsOpen(false)} className="bg-blue-600 hover:bg-blue-700 text-white text-center py-3 rounded-xl shadow-md">Contact Me</a>
+        <div className="md:hidden bg-slate-950 border-b border-slate-900 px-6 py-6 flex flex-col gap-4 text-sm font-bold tracking-wider">
+          <a href="#about" onClick={() => setIsOpen(false)} className="text-slate-400 hover:text-white py-2 border-b border-slate-900/50">ABOUT</a>
+          <a href="#projects" onClick={() => setIsOpen(false)} className="text-slate-400 hover:text-white py-2 border-b border-slate-900/50">PROJECTS</a>
+          <a href="#contact" onClick={() => setIsOpen(false)} className="bg-blue-600 text-white text-center py-3 rounded-xl">
+            CONTACT ME
+          </a>
         </div>
       )}
     </nav>
