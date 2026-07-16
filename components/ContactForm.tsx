@@ -1,59 +1,62 @@
-﻿'use client';
+﻿"use client";
 
-import { useForm } from 'react-hook-form';
-import { useState } from 'react';
-
-type ContactFormValues = {
-  name: string;
-  email: string;
-  message: string;
-};
+import React from "react";
 
 export default function ContactForm() {
-  const { register, handleSubmit, reset } = useForm<ContactFormValues>({ mode: 'onTouched' });
-  const [status, setStatus] = useState('');
-
-  const onSubmit = (values: ContactFormValues) => {
-    const body = encodeURIComponent(`Name: ${values.name}%0D%0AEmail: ${values.email}%0D%0A%0D%0A${values.message}`);
-    window.location.href = `mailto:mailkabdulrehman.dev@gmail.com?subject=Portfolio inquiry&body=${body}`;
-    setStatus('Your message is ready to send in your email client.');
-    reset();
-  };
-
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-      <div className="grid gap-4">
-        <div className="grid gap-4 sm:grid-cols-2">
-          <label className="block text-sm font-semibold text-slate-900">
-            Name
-            <input
-              {...register('name', { required: true })}
-              className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-3 text-sm text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
-              placeholder="Your name"
-            />
-          </label>
-          <label className="block text-sm font-semibold text-slate-900">
-            Email
-            <input
-              {...register('email', { required: true })}
-              className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-3 text-sm text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
-              placeholder="you@example.com"
-            />
-          </label>
-        </div>
-        <label className="block text-sm font-semibold text-slate-900">
-          Message
-          <textarea
-            {...register('message', { required: true })}
-            className="mt-2 min-h-[140px] w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-3 text-sm text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
-            placeholder="Tell me about your next project."
+    <div className="w-full max-w-lg mx-auto p-6 bg-slate-900 rounded-2xl shadow-xl text-white">
+      <h3 className="text-2xl font-bold mb-6 text-center text-blue-400">Get In Touch</h3>
+      
+      {/* Isme message seedha aapki email par jayega */}
+      <form 
+        action="https://formsubmit.co/malikabdulrehman.dev@gmail.com" 
+        method="POST"
+        className="flex flex-col gap-4"
+      >
+        {/* Spam protection ke liye */}
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_next" value="https://abdul-rehman-portfolio.vercel.app" />
+
+        <div>
+          <label className="block text-sm font-medium mb-1">Your Name</label>
+          <input 
+            type="text" 
+            name="name" 
+            required 
+            className="w-full p-3 rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-blue-500"
+            placeholder="Your Name"
           />
-        </label>
-        <button type="submit" className="inline-flex items-center justify-center rounded-full bg-indigo-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-indigo-700">
-          Send message
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium mb-1">Your Email</label>
+          <input 
+            type="email" 
+            name="email" 
+            required 
+            className="w-full p-3 rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-blue-500"
+            placeholder="your-email@example.com"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium mb-1">Your Message</label>
+          <textarea 
+            name="message" 
+            rows={4} 
+            required 
+            className="w-full p-3 rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-blue-500"
+            placeholder="Write your message here..."
+          />
+        </div>
+
+        <button 
+          type="submit" 
+          className="w-full p-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition-colors duration-200"
+        >
+          Send Message
         </button>
-        {status ? <p className="text-sm text-indigo-600">{status}</p> : null}
-      </div>
-    </form>
+      </form>
+    </div>
   );
 }
