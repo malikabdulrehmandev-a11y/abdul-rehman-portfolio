@@ -1,59 +1,26 @@
 ﻿"use client";
 
-import React, { useState } from "react";
+import React from "react";
+import ContactForm from "./ContactForm";
 
-export default function ContactForm() {
-  const [state, setState] = useState({ submitting: false, succeeded: false });
-
+export default function ContactSection() {
   return (
-    <div className="w-full max-w-lg mx-auto p-6 bg-slate-900 rounded-2xl shadow-xl text-white">
-      <h3 className="text-2xl font-bold mb-6 text-center text-blue-400">Get In Touch</h3>
-      
-      <form 
-        action="https://formspree.io/f/APNI_FORMSPREE_ID_YAHAN_LIKHEIN" 
-        method="POST"
-        className="flex flex-col gap-4"
-      >
-        <div>
-          <label className="block text-sm font-medium mb-1">Your Name</label>
-          <input 
-            type="text" 
-            name="name" 
-            required 
-            className="w-full p-3 rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-blue-500"
-            placeholder="John Doe"
-          />
+    <section id="contact" className="py-20 bg-slate-950 border-t border-slate-900">
+      <div className="max-w-4xl mx-auto px-6">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-black bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">
+            Let's Work Together
+          </h2>
+          <p className="text-slate-400 mt-2">
+            Have a project in mind? Feel free to reach out!
+          </p>
         </div>
-
-        <div>
-          <label className="block text-sm font-medium mb-1">Your Email</label>
-          <input 
-            type="email" 
-            name="email" 
-            required 
-            className="w-full p-3 rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-blue-500"
-            placeholder="john@example.com"
-          />
+        
+        <div className="bg-slate-900/50 p-8 rounded-2xl border border-slate-800 max-w-lg mx-auto">
+          {/* Yahan humne upar banaya hua ContactForm render kar diya */}
+          <ContactForm />
         </div>
-
-        <div>
-          <label className="block text-sm font-medium mb-1">Your Message</label>
-          <textarea 
-            name="message" 
-            rows={4} 
-            required 
-            className="w-full p-3 rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-blue-500"
-            placeholder="Write your message here..."
-          />
-        </div>
-
-        <button 
-          type="submit" 
-          className="w-full p-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition-colors duration-200"
-        >
-          Send Message
-        </button>
-      </form>
-    </div>
+      </div>
+    </section>
   );
 }
