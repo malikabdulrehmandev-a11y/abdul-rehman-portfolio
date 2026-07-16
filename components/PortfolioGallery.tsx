@@ -4,7 +4,7 @@ export default function PortfolioGallery() {
   return null;
 }
 
-/*
+
     title: "Premium Brand Identity",
 
     mainCategory: "Graphic Design",
@@ -350,4 +350,3 @@ const mainCategories = ["All", "Graphic Design", "UI/UX", "Branding", "Logo", "S
   );
 
 }
-*/
